@@ -1,0 +1,7 @@
+-- auto Generated on 2018-05-13 00:39:06 
+-- DROP TABLE IF EXISTS student; 
+CREATE TABLE student(
+	id INT (11) NOT NULL AUTO_INCREMENT COMMENT '学生id',
+	name VARCHAR (50) NOT NULL COMMENT '学生名字',
+	PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'student';
