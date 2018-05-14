@@ -1,0 +1,16 @@
+-- auto Generated on 2018-05-14 12:07:13 
+-- DROP TABLE IF EXISTS product; 
+CREATE TABLE product(
+	id INT (11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+	name VARCHAR (50) NOT NULL DEFAULT '' COMMENT '商品名称',
+	show_image VARCHAR (50) NOT NULL DEFAULT '' COMMENT '商品的主图片',
+	PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'product';
+-- auto Generated on 2018-05-14 12:31:15 
+-- DROP TABLE IF EXISTS product; 
+CREATE TABLE product(
+	id INT (11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+	name VARCHAR (50) NOT NULL DEFAULT '' COMMENT '商品名称',
+	show_image VARCHAR (50) NOT NULL DEFAULT '' COMMENT '商品的主图片',
+	PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'product';

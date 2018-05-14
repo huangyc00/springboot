@@ -1,0 +1,11 @@
+-- auto Generated on 2018-05-14 23:51:09
+DROP TABLE IF EXISTS category;
+CREATE TABLE category(
+	id INT (11) NOT NULL AUTO_INCREMENT COMMENT '类目的id',
+	name VARCHAR (50) NOT NULL DEFAULT '' COMMENT '类目的名称',
+	image VARCHAR (50) NOT NULL DEFAULT '' COMMENT '类目引用的图片',
+	orders INT (11) NOT NULL DEFAULT -1 COMMENT '类目的序号',
+	parent_id INT (11) NOT NULL DEFAULT -1 COMMENT '父级类目的id,当parentId为0时,表示为根',
+	edit_time DATETIME NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT '最后一次编辑时间',
+	PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'category';

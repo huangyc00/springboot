@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyc.dao.UserDao">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.hyc.entity.User">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        name
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="user.id">
+        INSERT INTO user (
+            id,
+            name
+        ) VALUES (
+            #{user.id,jdbcType=INTEGER},
+            #{user.name,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="user.id">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user.id!=null"> id,</if>
+            <if test="user.name!=null"> name,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user.id!=null">#{user.id,jdbcType=INTEGER},
+            </if>
+            <if test="user.name!=null">#{user.name,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO user (
+        <include refid="Base_Column_List"/>
+        )VALUES
+        <foreach collection="users" item="user" index="index" separator=",">
+            (
+            #{user.id,jdbcType=INTEGER},
+            #{user.name,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="user.id != null"> id= #{user.id,jdbcType=INTEGER},</if>
+            <if test="user.name != null"> name= #{user.name,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{user.id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 查询全部的user-->
+    <select id="findAll" resultType="com.hyc.entity.User">
+        SELECT * FROM USER
+    </select>
+</mapper>
+

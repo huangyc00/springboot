@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyc.product.dao.ProductDao">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.hyc.product.entity.Product">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="show_image" property="showImage" jdbcType="VARCHAR"/>
+        <result column="category_id" property="categoryId" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        name,
+        show_image,
+category_id
+</sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="product.id">
+        INSERT INTO product (
+            id,
+            name,
+            show_image,
+            category_id
+        ) VALUES (
+            #{product.id,jdbcType=INTEGER},
+            #{product.name,jdbcType=VARCHAR},
+            #{product.showImage,jdbcType=VARCHAR},
+            #{product.categoryId,jdbcType=INTEGER}
+        )
+</insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="product.id">
+        INSERT INTO product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="product.id!=null"> id,</if>
+            <if test="product.name!=null"> name,</if>
+            <if test="product.showImage!=null"> show_image,</if>
+            <if test="product.categoryId!=null"> category_id</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="product.id!=null"> #{product.id,jdbcType=INTEGER},</if>
+            <if test="product.name!=null"> #{product.name,jdbcType=VARCHAR},</if>
+            <if test="product.showImage!=null"> #{product.showImage,jdbcType=VARCHAR},</if>
+            <if test="product.categoryId!=null"> #{product.categoryId,jdbcType=INTEGER}</if>
+        </trim>
+</insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">        INSERT INTO product(
+        <include refid="Base_Column_List"/>
+        )VALUES
+        <foreach collection="products" item="product" index="index" separator=",">
+            (
+            #{product.id,jdbcType=INTEGER},
+            #{product.name,jdbcType=VARCHAR},
+            #{product.showImage,jdbcType=VARCHAR},
+            #{product.categoryId,jdbcType=INTEGER}
+            )
+        </foreach>
+</insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE product
+        <set>
+                <if test="product.id != null"> id = #{product.id,jdbcType=INTEGER},</if>
+                <if test="product.name != null"> name = #{product.name,jdbcType=VARCHAR},</if>
+                <if test="product.showImage != null"> show_image = #{product.showImage,jdbcType=VARCHAR},</if>
+                <if test="product.categoryId != null"> category_id = #{product.categoryId,jdbcType=INTEGER}</if>
+        </set>
+		WHERE id = #{product.id,jdbcType=INTEGER}
+    </update>
+
+
+    <select id="findAll" resultType="com.hyc.product.entity.Product">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM product
+    </select>
+
+
+    <resultMap id="productDtoResult" type="com.hyc.product.dto.ProductDto">
+        <id property="id" column="p_id" />
+        <result property="name" column="p_name"/>
+        <association property="categoryDto" javaType="com.hyc.product.dto.CategoryDto">
+            <id property="id" column="c_id"/>
+            <result property="name" column="c_name"/>
+        </association>
+    </resultMap>
+
+
+    <select id="findProductDtos" resultMap="productDtoResult">
+          SELECT
+          p.id as p_id,
+          p.name as p_name,
+          c.id as c_id,
+          c.name as c_name
+          from product as p LEFT JOIN category as c on p.category_id = c.id
+    </select>
+</mapper>
+

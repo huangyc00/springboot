@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyc.product.dao.CategoryDao">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.hyc.product.entity.Category">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+        <result column="orders" property="orders" jdbcType="INTEGER"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="edit_time" property="editTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        name,
+        image,
+        orders,
+        parent_id,
+        edit_time
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="category.id">
+        INSERT INTO category (
+            id,
+            name,
+            image,
+            orders,
+            parent_id,
+            edit_time
+        ) VALUES (
+            #{category.id,jdbcType=INTEGER},
+            #{category.name,jdbcType=VARCHAR},
+            #{category.image,jdbcType=VARCHAR},
+            #{category.orders,jdbcType=INTEGER},
+            #{category.parentId,jdbcType=INTEGER},
+            #{category.editTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="category.id">
+        INSERT INTO category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="category.id!=null"> id,</if>
+            <if test="category.name!=null"> name,</if>
+            <if test="category.image!=null"> image,</if>
+            <if test="category.orders!=null"> orders,</if>
+            <if test="category.parentId!=null"> parent_id,</if>
+            <if test="category.editTime!=null"> edit_time,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="category.id!=null">#{category.id,jdbcType=INTEGER},
+            </if>
+            <if test="category.name!=null">#{category.name,jdbcType=VARCHAR},
+            </if>
+            <if test="category.image!=null">#{category.image,jdbcType=VARCHAR},
+            </if>
+            <if test="category.orders!=null">#{category.orders,jdbcType=INTEGER},
+            </if>
+            <if test="category.parentId!=null">#{category.parentId,jdbcType=INTEGER},
+            </if>
+            <if test="category.editTime!=null">#{category.editTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO category (
+        <include refid="Base_Column_List"/>
+        )VALUES
+        <foreach collection="categorys" item="category" index="index" separator=",">
+            (
+            #{category.id,jdbcType=INTEGER},
+            #{category.name,jdbcType=VARCHAR},
+            #{category.image,jdbcType=VARCHAR},
+            #{category.orders,jdbcType=INTEGER},
+            #{category.parentId,jdbcType=INTEGER},
+            #{category.editTime,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE category
+        <set>
+            <if test="category.id != null"> id= #{category.id,jdbcType=INTEGER},</if>
+            <if test="category.name != null"> name= #{category.name,jdbcType=VARCHAR},</if>
+            <if test="category.image != null"> image= #{category.image,jdbcType=VARCHAR},</if>
+            <if test="category.orders != null"> orders= #{category.orders,jdbcType=INTEGER},</if>
+            <if test="category.parentId != null"> parent_id= #{category.parentId,jdbcType=INTEGER},</if>
+            edit_time = CURRENT_TIME
+        </set>
+        WHERE id = #{category.id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findAll" resultType="com.hyc.product.entity.Category">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM category
+    </select>
+</mapper>
+

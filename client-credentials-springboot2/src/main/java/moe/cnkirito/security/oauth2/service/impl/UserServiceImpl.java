@@ -1,10 +1,8 @@
 package moe.cnkirito.security.oauth2.service.impl;
 
 import moe.cnkirito.security.oauth2.dao.UserDao;
-import moe.cnkirito.security.oauth2.dao.UserMapper;
 import moe.cnkirito.security.oauth2.entity.User;
 import moe.cnkirito.security.oauth2.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
