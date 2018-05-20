@@ -5,7 +5,7 @@ import com.hyc.product.entity.Category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TreeUtil<T extends CPEntity> {
+public class TreeUtil<T extends TreeParentAndChild> {
 
     private List<T> cpEntities;
 
@@ -16,6 +16,11 @@ public class TreeUtil<T extends CPEntity> {
         this.cpEntities = cpEntities;
     }
 
+    /**
+     * 获取树状节点
+     * @param t
+     * @return
+     */
     public List<T> getChildrenTree(T t){
         if( null == t){
             return new ArrayList<>();

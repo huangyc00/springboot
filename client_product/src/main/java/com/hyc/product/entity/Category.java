@@ -1,6 +1,7 @@
 package com.hyc.product.entity;
 
-import com.hyc.product.util.CPEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.hyc.product.util.TreeParentAndChild;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @ApiModel
 @Data
-public class Category {
+public class Category{
 
     /**
      * 类目的id
@@ -42,7 +43,7 @@ public class Category {
      * 最后一次编辑时间
      */
     @ApiModelProperty(hidden = true)
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date editTime;
 
-    private List<Category> children;
 }

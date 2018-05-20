@@ -2,7 +2,7 @@ package com.hyc.product.service;
 
 import java.util.List;
 
-import com.hyc.product.entity.CateDto;
+import com.hyc.product.dto.CategoryDto;
 import com.hyc.product.entity.Category;
 public interface CategoryService{
 
@@ -16,7 +16,6 @@ public interface CategoryService{
 
     List<Category> findAll();
 
-    List<Category> findCategoryTree(int rootId);
+    List<CategoryDto> findCategoryTree(int rootId);
 
-    List<CateDto> findCateDtoTree(int rootId);
 }

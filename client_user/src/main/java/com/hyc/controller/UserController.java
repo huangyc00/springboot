@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -30,7 +33,21 @@ public class UserController {
 
     @ApiOperation(value="获取用户列表", notes="")
     @GetMapping("/findAll")
-    public List<User> findAll(){
-        return userService.findAll();
+    public Object findAll(){
+        List<User> users = new ArrayList<>();
+        if(userService.findAll().size() > 0){
+            users.add(0,userService.findAll().get(0));
+            users.add(0,userService.findAll().get(0));
+        }else{
+            User user = new User();
+            user.setId(1);
+            user.setName("user1");
+
+            users.add(0,user);
+            users.add(0,user);
+        }
+        Map map = new HashMap();
+        map.put("data",users);
+        return map;
     }
 }
