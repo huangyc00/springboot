@@ -24,10 +24,11 @@
 
     <!-- 子模块 -->
     <modules>
-        <module>client-credentials</module>
-        <module>client-credentials-springboot2</module>
+        <!--<module>client-credentials</module>-->
+        <!--<module>client-credentials-springboot2</module>-->
         <module>client_user</module>
         <module>client_product</module>
+        <module>client_common</module>
     </modules>
 
 

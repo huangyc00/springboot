@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.hyc.dao")
+@tk.mybatis.spring.annotation.MapperScan("com.hyc.dao")
 public class ClientUserApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ClientUserApplication.class, args);

@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- 基本信息 -->
-	<artifactId>product</artifactId>
+	<artifactId>client_product</artifactId>
 	<packaging>jar</packaging>
 
-	<name>product</name>
+	<name>client_product</name>
 	<description>商品模块</description>
 
 	<parent>
@@ -77,7 +77,11 @@
 			<artifactId>lombok</artifactId>
 			<version>1.16.10</version>
 		</dependency>
-
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper-spring-boot-starter</artifactId>
+			<version>1.1.4</version>
+		</dependency>
 		<!--dozer-->
 		<dependency>
 			<groupId>net.sf.dozer</groupId>
@@ -94,6 +98,13 @@
                    <artifactId>log4j</artifactId>
                 </exclusion>-->
 			</exclusions>
+		</dependency>
+
+		<!--client_common-->
+		<dependency>
+			<groupId>com.hyc</groupId>
+			<artifactId>client_common</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 
